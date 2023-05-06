@@ -14,8 +14,20 @@ describe('Context: my first tests',() => {
     afterEach(() => {
         // runs after EACH test (AdterMethod in TestNG)
     })
-    it('opening a web application', () => {
+    xit('opening a web application', () => {
         cy.visit('/registration_form');
+    })
+    xit('Test 2', () => {
+        expect(false).to.equal(false);
+    })
+    xit('Test 3', () => {
+        expect(false).not.to.equal(true);
+    })
+    xit('Test 4', () => {
+        expect(5).to.equal(5);
+    })
+    xit('Test 5', () => {
+        expect(true).to.equal('5'== 5);
     })
     
 })
