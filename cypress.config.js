@@ -5,7 +5,7 @@ module.exports = defineConfig({
     baseUrl: 'https://practice.cydeo.com/',
     video: false,
     retries: 2, 
-    defaultCommandTimeout: 5000, // normally default is 4000
+    defaultCommandTimeout: 5000, // normally default is 4000m
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
