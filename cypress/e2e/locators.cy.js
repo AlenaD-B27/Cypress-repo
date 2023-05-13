@@ -6,7 +6,7 @@ describe('before each',() => {
         cy.visit('/login');
     })
 
-    it('different strategies', () => {
+    xit('Check different strategies', () => {
 
         // by css selector
         cy.get('input[name="username"]').type('CydeoStudent');
@@ -32,5 +32,28 @@ describe('before each',() => {
         cy.get('button').should('contain','Login').click();
     })
 
+    xit('Check finding elements by traveling through DOM', () => {
+        // travel to find the login button: locate username box - go to parent form then find button
 
+        cy.get('input[name="username"]').parents('form').find('button').should('contain', 'Login').click();
+
+    })
+
+    it('Check different type of assertions', () => {
+        // Cypress itself boundles assertions provided by Chai, Sinon and jQuery libraries
+
+        // ASSERTIONS:
+
+        // should
+        cy.get('#wooden_spoon')
+        .should('contain', 'Login')
+        .and('have.class','btn btn-primary');
+
+        // expect : explicit assetrtion
+        cy.get('#wooden_spoon').then((buttonElement) => {
+            expect(buttonElement).to.have.text('Login');
+            expect(buttonElement).to.have.class('btn btn-primary');
+        })
+
+    })
 })
