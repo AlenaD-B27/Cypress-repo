@@ -41,12 +41,41 @@ describe('before each', () => {
     }))
   })
 
-  it('Check different checkbox actions',() => {
+  xit('Check different checkbox actions',() => {
     // get all checkboxes, select Java and verify
     cy.get('[type="checkbox"]').then((checkbox) => {
         cy.wrap(checkbox).eq(1).check().should('be.checked');
         // uncheck it
         cy.wrap(checkbox).eq(1).uncheck().should('not.be.checked');
+        // verify third one has valiue Javascript and check and verify
+        cy.wrap(checkbox).eq(2)
+        .should('have.value', 'javascript')
+        .check()
+        .should('be.checked');
+    })
+  })
+
+  xit('Check selection of a single option from dropdown', () => {
+    // select one element
+    cy.get('select[name="job_title"]').select('SDET');
+    // assert that dropdown has correct text after selecting
+    cy.get('select[name="job_title"]').contains('SDET');
+  })
+
+  it('Check selection of all dropdown options', () => {
+    // we will provide our test data through fixtures folder as JSON object, then use that data to verify select values
+    cy.fixture('departments').then((departments) => {
+        // get all options in the menu, iterate through these options one by one
+        cy.get('select[name="department"] > option').each((option, index) => {
+            // get each option text
+            const optionText = option.text();
+           // cy.log(optionText);
+           // cy.log(index);
+           // cy.log(departments[index]);
+           cy.get('select[name="department"]').select(optionText)
+           .should('have.value', option.val())
+           .contains(departments[index]);
+        })
     })
   })
 });
