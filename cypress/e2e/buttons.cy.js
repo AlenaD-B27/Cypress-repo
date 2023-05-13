@@ -17,5 +17,25 @@ describe('before each',() => {
             // assert the text
             cy.contains('Clicked on button three!').should('be.visible');
         })
+
+        // all buttons on the page // EACH FUNCTION --> creates the loop and verifies in loop each element's length (6 times)
+        cy.get('button').each((item, index, list) => {
+
+            // verify number of buttons
+            expect(list).to.have.length(6);
+
+            // verify attribute
+            expect(list).to.have.attr('onclick');
+        })
+
+        // creates the loop, fins the element -> verifies ONCE, just for this element
+        cy.get('button').each((item) => {
+            if(item.text() == 'Button 4'){
+                cy.log(item.text());
+                item.click(); // doesn't work inside jQuery element
+                cy.wrap(item).click();
+                cy.contains('Clicked on button four!').should('be.visible');
+            }
+        })
     })
 })
