@@ -6,7 +6,7 @@ describe('before each',() => {
         cy.visit('/login');
     })
 
-    xit('Check different strategies', () => {
+    it('Check different strategies', () => {
 
         // by css selector
         cy.get('input[name="username"]').type('CydeoStudent');
@@ -32,7 +32,7 @@ describe('before each',() => {
         cy.get('button').should('contain','Login').click();
     })
 
-    xit('Check finding elements by traveling through DOM', () => {
+    it('Check finding elements by traveling through DOM', () => {
         // travel to find the login button: locate username box - go to parent form then find button
 
         cy.get('input[name="username"]').parents('form').find('button').should('contain', 'Login').click();
