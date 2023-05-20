@@ -6,7 +6,7 @@ describe('before each', () => {
     cy.visit('/registration_form');
   });
 
-  xit('Check different input box fields', () => {
+  it('Check different input box fields', () => {
     cy.get('input[name="firstname"]').type('Alena');
     cy.get('input[name="lastname"]').type('Ohoho');
     cy.get('input[name="username"]').type('Owlie');
@@ -19,7 +19,7 @@ describe('before each', () => {
     cy.get('input[name="birthday"]').type('01/01/1999');
   });
 
-  xit('Check different radio button actions', () => {
+  it('Check different radio button actions', () => {
     cy.get('.radio')
     .find('[type=radio]')
     .then((radio => {
@@ -41,7 +41,7 @@ describe('before each', () => {
     }))
   })
 
-  xit('Check different checkbox actions',() => {
+  it('Check different checkbox actions',() => {
     // get all checkboxes, select Java and verify
     cy.get('[type="checkbox"]').then((checkbox) => {
         cy.wrap(checkbox).eq(1).check().should('be.checked');
@@ -55,7 +55,7 @@ describe('before each', () => {
     })
   })
 
-  xit('Check selection of a single option from dropdown', () => {
+  it('Check selection of a single option from dropdown', () => {
     // select one element
     cy.get('select[name="job_title"]').select('SDET');
     // assert that dropdown has correct text after selecting
