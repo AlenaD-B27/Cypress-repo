@@ -1,10 +1,14 @@
 {
-    "user1": {
+    "user1" : {
         "firstName" : "Alena",
         "lastName" : "Wonderwoman",
         "age" : "40",
         "userEmail" : "alenaWonder@mail.com",
         "salary" : "200000", 
         "department" : "legal"
+    },
+    "user2" : {
+        "username": "tomsmith",
+        "password": "SuperSecretPassword"
     }
 }
